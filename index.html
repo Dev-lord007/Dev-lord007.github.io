@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Orbit - Track Your Spending</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body data-theme="light">
+
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo">Expense Orbit 🚀</h1>
+            <div class="nav-links">
+                <a href="#" id="home-link" class="active">Calculator</a>
+                <a href="#" id="summary-link">Summary</a>
+            </div>
+            <div class="theme-switcher">
+                <input type="checkbox" id="theme-toggle" class="theme-toggle-checkbox">
+                <label for="theme-toggle" class="theme-toggle-label">
+                    <span class="sun">☀️</span>
+                    <span class="moon">🌙</span>
+                </label>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div id="calculator-page" class="page active">
+            <div class="expense-form-container">
+                <h2>Log a New Expense</h2>
+                <form id="expense-form">
+                    <div class="form-group">
+                        <label for="expense-description">What did you spend on?</label>
+                        <input type="text" id="expense-description" placeholder="e.g., Coffee" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="expense-amount">Amount ($)</label>
+                        <input type="number" id="expense-amount" placeholder="e.g., 4.50" min="0.01" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="expense-category">Category</label>
+                        <select id="expense-category" required>
+                            <option value="Food">🍔 Food</option>
+                            <option value="Entertainment">🎬 Entertainment</option>
+                            <option value="Transport">🚗 Transport</option>
+                            <option value="Shopping">🛍️ Shopping</option>
+                            <option value="Utilities">💡 Utilities</option>
+                            <option value="Health">💊 Health</option>
+                            <option value="Misc">📦 Misc</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="expense-date">Date</label>
+                        <input type="date" id="expense-date" required>
+                    </div>
+                    <button type="submit" class="btn">Add Expense</button>
+                </form>
+            </div>
+
+            <div class="expense-list-container">
+                <h2>Recent Expenses</h2>
+                <ul id="expense-list">
+                    </ul>
+            </div>
+        </div>
+
+        <div id="summary-page" class="page">
+            <div class="summary-header">
+                <h2>Your Monthly Summary</h2>
+                <p id="summary-month-year">September 2025</p>
+            </div>
+
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <h3>Total Spent This Month</h3>
+                    <p id="total-expense" class="stat">$0.00</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Top Spending Category</h3>
+                    <p id="top-category" class="stat">N/A</p>
+                </div>
+                 <div class="summary-card pun-card">
+                    <h3>Your Spending Style</h3>
+                    <p id="spending-pun" class="pun">"Just getting started? Let's make it rain... responsibly."</p>
+                </div>
+            </div>
+
+            <div class="charts-container">
+                <div class="chart-card">
+                    <h3>Expense Breakdown</h3>
+                    <canvas id="category-pie-chart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>Daily Spending Trend</h3>
+                    <canvas id="daily-bar-chart"></canvas>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
